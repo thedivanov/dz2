@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dz2-service
+  labels:
+    name: dz2-service
+    owner: d.ivanov
+spec:
+  type: NodePort
+  selector:
+    project: dz2
+  ports:
+    - port: 8000
+      targetPort: web
+      protocol: TCP

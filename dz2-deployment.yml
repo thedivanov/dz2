@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dz2-deployment
+  labels:
+    app: dz2
+    owner: d.ivanov
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      project: dz2
+  template:
+    metadata:
+      labels:
+        project: dz2
+    spec:
+      containers:
+        - name: dz2
+          image: thedivanov/dz1:1.0
+          ports:
+            - name: web
+              containerPort: 8000

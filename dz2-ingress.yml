@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dz2-ingrerss
+  labels:
+    name: dz2-ingrerss
+    owner: d.ivanov
+spec:
+  defaultBackend:
+    service:
+      name: dz2-service
+      port:
+        number: 8000
+  rules:
+  - host: arch.homework
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: dz2-service
+            port:
+              number: 8000
